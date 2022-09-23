@@ -9,6 +9,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
+import { urlFor } from "../sanity";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
@@ -65,7 +66,7 @@ const Home = (props: Props) => {
           <div className="flex items-center justify-center">
             <img
               className="h-10 rounded-full w-10 filter grayscale hover:grayscale-0 cursor-pointer"
-              src="https://scontent.fbdo10-1.fna.fbcdn.net/v/t39.30808-1/307318606_10219895159718695_2202514320197335716_n.jpg?stp=dst-jpg_p200x200&_nc_cat=105&ccb=1-7&_nc_sid=7206a8&_nc_ohc=Z77cngaqpzQAX99G_N-&_nc_ht=scontent.fbdo10-1.fna&oh=00_AT8FzQJrxsltz13FFfIrBqHhjOwbNMP8TyZHwgDtPyy-dw&oe=6330EDCE"
+              src={urlFor(pageInfo?.heroImage).url()}
               alt=""
             />
           </div>
