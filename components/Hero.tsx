@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
@@ -25,11 +26,14 @@ const Hero = ({ pageInfo }: Props) => {
     overflow-hidden text-center"
     >
       <BackgroundCircles />
-      <img
-        className="h-[180px] w-32 relative mx-auto rounded-full object-cover"
-        src={urlFor(pageInfo?.heroImage).url()}
-        alt=""
-      />
+      <div className="h-[180px] w-32 relative mx-auto rounded-full object-cover">
+        <Image
+          className="rounded-full"
+          src={urlFor(pageInfo?.heroImage).url()}
+          layout="fill"
+          alt=""
+        />
+      </div>
       <div className="z-20">
         <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
           {pageInfo?.role}

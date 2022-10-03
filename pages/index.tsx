@@ -53,25 +53,13 @@ const Home = (props: Props) => {
         <Skills skills={skills} />
       </section>
 
-      <section className="snap-start" id="projects">
+      <section className="snap-start" id="project">
         <Projects projects={projects} />
       </section>
 
       <section className="snap-start" id="contact">
         <ContactMe />
       </section>
-
-      <Link href="#hero">
-        <footer className="sticky bottom-5 cursor-pointer">
-          <div className="flex items-center justify-center">
-            <img
-              className="h-10 rounded-full w-10 filter grayscale hover:grayscale-0 cursor-pointer"
-              src={urlFor(pageInfo?.heroImage).url()}
-              alt=""
-            />
-          </div>
-        </footer>
-      </Link>
     </div>
   );
 };

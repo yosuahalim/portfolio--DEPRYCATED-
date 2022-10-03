@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Project } from "../typings";
 import { urlFor } from "../sanity";
+import Image from "next/image";
 
 type Props = {
   projects: Project[];
@@ -20,12 +21,9 @@ const Projects = ({ projects }: Props) => {
         Projects
       </h3>
 
-      <div className="relative z-20 flex h-screen w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary cursor-pointer ">
+      <div className="relative z-20 flex h-screen w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-primary ">
         {projects.map((project, i) => (
-          <a
-            href={project.linkToBuild}
-            target="_blank"
-            rel="noreferrer"
+          <div
             className="flex h-screen w-screen flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-20 md:p-44"
             key={project._id}
           >
@@ -34,7 +32,8 @@ const Projects = ({ projects }: Props) => {
                 y: -300,
                 opacity: 0,
               }}
-              className="xl:max-w-[700px] xl:max-h-[700px]"
+              onClick={() => window.open(project.linkToBuild, "_blank")}
+              className="xl:max-w-[700px] xl:max-h-[700px] cursor-pointer"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               src={urlFor(project.image).url()}
@@ -51,12 +50,14 @@ const Projects = ({ projects }: Props) => {
 
               <div className="flex items-center space-x-2 justify-center">
                 {project.technologies.map((tech) => (
-                  <img
-                    className="h-10 w-10"
-                    key={tech._id}
-                    src={urlFor(tech.image).url()}
-                    alt=""
-                  />
+                  <div key={tech._id} className="relative">
+                    <Image
+                      src={urlFor(tech.image).url()}
+                      width={40}
+                      height={40}
+                      alt=""
+                    />
+                  </div>
                 ))}
               </div>
 
@@ -64,7 +65,7 @@ const Projects = ({ projects }: Props) => {
                 {project.summary}
               </p>
             </div>
-          </a>
+          </div>
         ))}
       </div>
 
